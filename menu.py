@@ -17,7 +17,13 @@ def menu():
         elif z==3:
             Registro.mostra_emp()
         elif z==4:
-            Registro.cartao_ponto()
+            k= int(input("Deseja:\n1-Bater Ponto\n2-Ver Ponto\n>>>"))
+            if k==1:
+                Registro.cartao_ponto()
+            elif k==2:
+                Registro.ver_cartao_ponto()
+            else:
+                print("OPÇÃO INVÁLIDA")
         elif z==5:
             Registro.lanca_vendas()
         elif z==6:

@@ -11,6 +11,7 @@
 10 Criação de Novas Agendas de Pagamento
 '''
 
+from CartaoPonto import CartaoPonto
 from Comissionado import Comissionado
 from Horista import Horista
 from Empregados import Empregados
@@ -20,9 +21,10 @@ import os
 clear = lambda: os.system('cls')
 
 
-class Registro(Empregados):
+class Registro():
 
     emp_cadrastados = []
+    ponto = []
     num_emp = len(emp_cadrastados)
 
     def mostra_emp():
@@ -32,6 +34,15 @@ class Registro(Empregados):
             i.toEmpregado()
             print("\n")
         h=input("ENTER")
+
+    def gera_id():
+        k=0
+        while(k!=1):
+            x = random.randrange(1,1000)
+            for i in range(Registro.num_emp):
+                if i==x or i==Registro.num_emp:
+                    break
+            return x
 
     def add_empregado():
         clear()
@@ -63,58 +74,77 @@ class Registro(Empregados):
         new.toEmpregado()
         h=input("ENTER")
 
-    def gera_id():
-        k=0
-        while(k!=1):
-            x = random.randrange(1,1000)
-            for i in range(Registro.num_emp):
-                if i==x or i==Registro.num_emp:
-                    break
-            return x
-
-
     def remover_empregado():
-        #ERRO
         k=int(input("Sabe o ID do funcionario?\n1-Sim\n2-Não\n>>>"))
-        if k==1:
+        if k==1 or k==2:
+            if k==2:
+                Registro.mostra_emp()
             emp= int(input("Digite o ID do empregado:\n>>>"))
             for i in Registro.emp_cadrastados:
                 if emp == i.id_emp:
                     Registro.emp_cadrastados.remove(i)
-                else:
-                    print("Empregado Nâo Cadrastado")
+                    return
+            print("Empregado Não Cadrastado")
         else:
-            Registro.mostra_emp()
+            print("OPÇÃO INVÁLIDA")
+        
+    def altera_dados():
+        k=int(input("Sabe o ID do Empregado:\n1-Sim\n2-Não\n>>>"))
+        if k==1 or k==1:
+            if k==2:
+                Registro.mostra_emp()
+            emp = int(input("Digite o ID do empregado:\n>>>"))
+            for i in Registro.emp_cadrastados:
+                if emp == i.id_emp:
+                   i.modificar_cadrastro()
+                   return
+            print("Empregado Não Cadrastado")
+        else:
+            print("OPÇÃO INVÁLIDA")
+        
+    def cartao_ponto():
+        k = int(input("Sabe o ID do Empregado:\n1-SIM\n2-NÃO\n>>>"))
+        if k==1 or k==2:
+            if k==2:
+                Registro.mostra_emp()
             emp= int(input("Digite o ID do empregado:\n>>>"))
             for i in Registro.emp_cadrastados:
                 if emp == i.id_emp:
-                    Registro.emp_cadrastados.remove(i)
-                else:
-                    print("Empregado Nâo Cadrastado")
+                    k = int(input("Deseja BATER PONTO:\n1-ENTRADA\n2-SAÍDA\n>>>"))
+                    if k==1:
+                        novo_ponto = CartaoPonto()
+                        novo_ponto.setEntrada(emp)
+                        Registro.ponto.append(novo_ponto)
+                        return
+                    elif k==2:
+                        for g in Registro.ponto:
+                            if emp == g.id_emp and g.saida == "-------" :
+                                g.setSaida()
+                                return
+                        print("Ponto indisponivel ou já foi batido ")
+                    else:
+                        print("OPÇÃO INVÁLIDA")
+                        return
+            print("Empregado Não Cadrastado")
+        else:
+            print("OPÇÃO INVÁLIDA")
 
-    def cartao_ponto():
-        pass
+    def ver_cartao_ponto():
+        k = int(input("Sabe o ID do Empregado:\n1-SIM\n2-NÃO\n>>>"))
+        if k==1 or k==2:
+            if k==2:
+                Registro.mostra_emp()
+            emp= int(input("Digite o ID do empregado:\n>>>"))
+            for i in Registro.ponto:
+                if emp == i.id_emp:
+                    i.toPonto()
+                    return
+            print("Empregado Não Cadrastado")
+        else:
+            print("OPÇÃO INVÁLIDA")
     
     def lanca_vendas():
         pass
     
     def lanca_taxa():
         pass
-    
-    def altera_dados():
-        k=int(input("Sabe o ID do funcionario?\n1-Sim\n2-Não\n>>>"))
-        if k==1:
-            emp= int(input("Digite o ID do empregado:\n>>>"))
-            for i in Registro.emp_cadrastados:
-                if emp == i.id_emp:
-                   i.modificar_cadrastro()
-                else:
-                    print("Empregado Nâo Cadrastado")
-        else:
-            Registro.mostra_emp()
-            emp= int(input("Digite o ID do empregado:\n>>>"))
-            for i in Registro.emp_cadrastados:
-                if emp == i.id_emp:
-                   i.modificar_cadrastro()
-                else:
-                    print("Empregado Nâo Cadrastado")
