@@ -24,10 +24,25 @@ def menu():
                 Registro.ver_cartao_ponto()
             else:
                 print("OPÇÃO INVÁLIDA")
+                h = input("ENTER")
         elif z==5:
-            Registro.lanca_vendas()
+            k= int(input("Deseja:\n1-Lança Venda\n2-Ver Vendas\n>>>"))
+            if k==1:
+                Registro.lanca_vendas()
+            elif k==2:
+                Registro.ver_vendas()
+            else:
+                print("OPÇÃO INVÁLIDA")
+                h = input("ENTER")
         elif z==6:
-            Registro.lanca_taxa()
+            k= int(input("Deseja:\n1-Lança Taxa\n2-Ver Taxas\n>>>"))
+            if k==1:
+                Registro.lanca_taxa()
+            elif k==2:
+                Registro.ver_taxas()
+            else:
+                print("OPÇÃO INVÁLIDA")
+                h = input("ENTER")
         elif z==7:
             Registro.altera_dados()
         elif z==8:

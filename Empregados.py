@@ -1,4 +1,8 @@
-class Empregados():
+from Sindicato import Sindicato
+from Banco import Banco
+
+
+class Empregados(Sindicato,Banco):
     def __init__(self,nome ="--------",endereco="--------",id_emp = "--------",tipo = "--------",sindicato = "--------", pagamento = "--------"):
         self.nome = nome
         self.endereco= endereco
@@ -32,6 +36,8 @@ class Empregados():
             else:
                 if k == 1:
                     self.sindicato = "Sim"
+                    Sindicato.cadrastra_emp(self,self.id_emp)
+                    Sindicato.toEmp_sind(self)
                     i=1
                 elif k==2:
                     self.sindicato = "Não"
@@ -54,6 +60,8 @@ class Empregados():
                     i=1
                 elif k==3:
                     self.pagamento = "Conta bancária"
+                    Banco.cadrastra(self)
+                    Banco.toBanco(self)
                     i=1
                 else:
                     print("FORMA DE PAGAMNTO INVÁLIDA")

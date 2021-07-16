@@ -11,6 +11,8 @@
 10 Criação de Novas Agendas de Pagamento
 '''
 
+from Taxas import Taxas
+from Vendas import Vendas
 from CartaoPonto import CartaoPonto
 from Comissionado import Comissionado
 from Horista import Horista
@@ -25,6 +27,8 @@ class Registro():
 
     emp_cadrastados = []
     ponto = []
+    vendas = []
+    taxas = []
     num_emp = len(emp_cadrastados)
 
     def mostra_emp():
@@ -90,7 +94,7 @@ class Registro():
         
     def altera_dados():
         k=int(input("Sabe o ID do Empregado:\n1-Sim\n2-Não\n>>>"))
-        if k==1 or k==1:
+        if k==1 or k==2:
             if k==2:
                 Registro.mostra_emp()
             emp = int(input("Digite o ID do empregado:\n>>>"))
@@ -142,9 +146,72 @@ class Registro():
             print("Empregado Não Cadrastado")
         else:
             print("OPÇÃO INVÁLIDA")
+
+    def ver_vendas():
+        k = int(input("Sabe o ID do Empregado:\n1-SIM\n2-NÃO\n>>>"))
+        if k==1 or k==2:
+            if k==2:
+                Registro.mostra_emp()
+            emp= int(input("Digite o ID do empregado:\n>>>"))
+            for i in Registro.vendas:
+                if emp == i.id_emp:
+                    i.toVenda()
+                    return
+            print("Empregado Não Cadrastado")
+            k = input("ENTER")
+        else:
+            print("OPÇÃO INVÁLIDA")
+            k = input("ENTER")
     
     def lanca_vendas():
-        pass
-    
+        k=int(input("Sabe o ID do Empregado:\n1-Sim\n2-Não\n>>>"))
+        if k==1 or k==2:
+            if k==2:
+                Registro.mostra_emp()
+            emp = int(input("Digite o ID do empregado:\n>>>"))
+            for i in Registro.emp_cadrastados:
+                if emp == i.id_emp:
+                    new_venda = Vendas()
+                    new_venda.cadrastra(emp)
+                    Registro.vendas.append(new_venda)
+                    return
+            print("Empregado Não Cadrastado")
+            h = input("ENTER")
+        else:
+            print("OPÇÃO INVÁLIDA")
+            h = input("ENTER")
+
+
+    def ver_taxas():
+        k = int(input("Sabe o ID do Empregado:\n1-SIM\n2-NÃO\n>>>"))
+        if k==1 or k==2:
+            if k==2:
+                Registro.mostra_emp()
+            emp= int(input("Digite o ID do empregado:\n>>>"))
+            for i in Registro.vendas:
+                if emp == i.id_emp:
+                    i.toTaxa()
+                    return
+            print("Empregado Não Cadrastado")
+            k = input("ENTER")
+        else:
+            print("OPÇÃO INVÁLIDA")
+            k = input("ENTER")
+
     def lanca_taxa():
-        pass
+        k=int(input("Sabe o ID do Empregado:\n1-Sim\n2-Não\n>>>"))
+        if k==1 or k==2:
+            if k==2:
+                Registro.mostra_emp()
+            emp = int(input("Digite o ID do empregado:\n>>>"))
+            for i in Registro.emp_cadrastados:
+                if emp == i.id_emp:
+                    new_taxa = Taxas()
+                    new_taxa.cadastrar(emp)
+                    Registro.taxas.append(new_taxa)
+                    return
+            print("Empregado Não Cadrastado")
+            h = input("ENTER")
+        else:
+            print("OPÇÃO INVÁLIDA")
+            h = input("ENTER")
