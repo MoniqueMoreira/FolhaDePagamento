@@ -8,6 +8,7 @@ class Assalariado(Empregados):
 
     def setcadrasta (self,id_emp):
         self.tipo = "Assalariado"
+        super().agenda = "Mensalmente"
         super().cadrastra(id_emp)
         Assalariado.setSalario(self)
 
@@ -38,6 +39,7 @@ class Assalariado(Empregados):
         self.salario = salario
     
     def toEmpregado(self):
-        print("ID: {}\nNome: {}\nEndereço: {}\nTipo: {}\nSalario: {}\nTipo de Pagamento: {}\nSindicato: {}".format(self.id_emp,self.nome,self.endereco,self.tipo,self.salario,self.pagamento,self.sindicato))
+        super().toEmpregados()
+        print("Salario: {}".format(self.salario))
 
     

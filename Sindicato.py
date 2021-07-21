@@ -27,4 +27,4 @@ class Sindicato():
         return self.adicionais
 
     def toEmp_sind(self):
-        print("ID do Sindicato: {}\n Taxas Mensal: {}".format(self.id_sind,self.taxa))
+        print("ID do Sindicato: {}\nTaxas Mensal: {}".format(self.id_sind,self.taxa))

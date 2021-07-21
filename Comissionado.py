@@ -9,6 +9,7 @@ class Comissionado(Empregados):
 
     def setcadrasta (self,id_emp):
         self.tipo = "Comissionado"
+        super().agenda = "Bi - Semanalmente"
         super().cadrastra(id_emp)
         Comissionado.setSalario(self)
         Comissionado.setPercentual(self)
@@ -45,6 +46,5 @@ class Comissionado(Empregados):
         self.percentual =percentual
     
     def toEmpregado(self):
-        print("ID: {}\nNome: {}\nEndereço: {}\nTipo: {}\nSalario: {}\nPercentual: {}\nTipo de Pagamento: {}\nSindicato: {}".format(self.id_emp,self.nome,self.endereco,self.tipo,self.salario,self.percentual,self.pagamento,self.sindicato))
-
-    
+        super().toEmpregados()
+        print("Salario: {}\nPercentual: {}".format(self.salario,self.percentual))

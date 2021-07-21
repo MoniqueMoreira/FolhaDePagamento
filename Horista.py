@@ -8,6 +8,7 @@ class Horista(Empregados):
 
     def setcadrasta (self,id_emp):
         self.tipo = "Horista"
+        super().agenda = "Semanalmente"
         super().cadrastra(id_emp)
         Horista.setHora(self)
 
@@ -38,6 +39,7 @@ class Horista(Empregados):
         self.hora = hora
     
     def toEmpregado(self):
-        print("ID: {}\nNome: {}\nEndereço: {}\nTipo: {}\nValor/Hora: {}\nTipo de Pagamento: {}\nSindicato: {}".format(self.id_emp,self.nome,self.endereco,self.tipo,self.hora,self.pagamento,self.sindicato))
+        super().toEmpregados()
+        print("Valor/Hora: {}".format(self.hora))
 
     
