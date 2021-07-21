@@ -14,8 +14,6 @@ class Vendas():
         print("Venda cadrastada com sucesso!!")
         Vendas.toVenda(self)
         
-
-
     def toVenda(self):
         print("ID do empregado: {}\nValor da venda: {}\nData: {}".format(self.id_emp,self.venda,self.data))
         h = input("ENTER")
