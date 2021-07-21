@@ -13,10 +13,11 @@ class Taxas():
         self.motivo =motivo
         taxa = float(input("Valor da TAXA:\n>>>"))
         self.taxa = taxa
-        self.data = datetime.now()
+        self.data = self.data = input("Digite o Dia:\n>>>")
         print("Venda cadrastada com sucesso!!")
         Taxas.toTaxa(self)
-        h= input("ENTER")
+        
 
     def toTaxa(self):
         print("Motivo da taxa: {}\nValor da taxa: {}\nData: {}".format(self.motivo,self.taxa,self.data))
+        h= input("ENTER")

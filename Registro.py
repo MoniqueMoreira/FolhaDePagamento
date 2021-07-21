@@ -1,16 +1,3 @@
-'''
-1 Adição de um empregado Um novo empregado é adicionado ao sistema. 
-2 Remoção de um empregado.
-3 Lançar um Cartão de Ponto.
-4 Lançar um Resultado Venda. 
-5 Lançar uma taxa de serviço.
-6 Alterar detalhes de um empregado. 
-7 Rodar a folha de pagamento para hoje.
-8 Undo/redo.
-9 Agenda de Pagamento.
-10 Criação de Novas Agendas de Pagamento
-'''
-
 from Taxas import Taxas
 from Vendas import Vendas
 from CartaoPonto import CartaoPonto
@@ -26,9 +13,6 @@ clear = lambda: os.system('cls')
 class Registro():
 
     emp_cadrastados = []
-    ponto = []
-    vendas = []
-    taxas = []
     num_emp = len(emp_cadrastados)
 
     def mostra_emp():
@@ -114,21 +98,9 @@ class Registro():
             emp= int(input("Digite o ID do empregado:\n>>>"))
             for i in Registro.emp_cadrastados:
                 if emp == i.id_emp:
-                    k = int(input("Deseja BATER PONTO:\n1-ENTRADA\n2-SAÍDA\n>>>"))
-                    if k==1:
-                        novo_ponto = CartaoPonto()
-                        novo_ponto.setEntrada(emp)
-                        Registro.ponto.append(novo_ponto)
-                        return
-                    elif k==2:
-                        for g in Registro.ponto:
-                            if emp == g.id_emp and g.saida == "-------" :
-                                g.setSaida()
-                                return
-                        print("Ponto indisponivel ou já foi batido ")
-                    else:
-                        print("OPÇÃO INVÁLIDA")
-                        return
+                    novo_ponto = CartaoPonto()
+                    novo_ponto.setpPonto()
+                    i.pontos.append(novo_ponto)
             print("Empregado Não Cadrastado")
         else:
             print("OPÇÃO INVÁLIDA")
@@ -139,9 +111,10 @@ class Registro():
             if k==2:
                 Registro.mostra_emp()
             emp= int(input("Digite o ID do empregado:\n>>>"))
-            for i in Registro.ponto:
+            for i in Registro.emp_cadrastados:
                 if emp == i.id_emp:
-                    i.toPonto()
+                    for d in i.pontos:
+                        d.toPonto()
                     return
             print("Empregado Não Cadrastado")
         else:
@@ -153,9 +126,10 @@ class Registro():
             if k==2:
                 Registro.mostra_emp()
             emp= int(input("Digite o ID do empregado:\n>>>"))
-            for i in Registro.vendas:
+            for i in Registro.emp_cadrastados:
                 if emp == i.id_emp:
-                    i.toVenda()
+                    for d in i.vendas:
+                        d.toVenda()
                     return
             print("Empregado Não Cadrastado")
             k = input("ENTER")
@@ -173,7 +147,7 @@ class Registro():
                 if emp == i.id_emp:
                     new_venda = Vendas()
                     new_venda.cadrastra(emp)
-                    Registro.vendas.append(new_venda)
+                    i.vendas.append(new_venda)
                     return
             print("Empregado Não Cadrastado")
             h = input("ENTER")
@@ -181,16 +155,16 @@ class Registro():
             print("OPÇÃO INVÁLIDA")
             h = input("ENTER")
 
-
     def ver_taxas():
         k = int(input("Sabe o ID do Empregado:\n1-SIM\n2-NÃO\n>>>"))
         if k==1 or k==2:
             if k==2:
                 Registro.mostra_emp()
             emp= int(input("Digite o ID do empregado:\n>>>"))
-            for i in Registro.vendas:
+            for i in Registro.emp_cadrastados:
                 if emp == i.id_emp:
-                    i.toTaxa()
+                    for d in i.taxas:
+                        d.toTaxa()
                     return
             print("Empregado Não Cadrastado")
             k = input("ENTER")
@@ -208,7 +182,7 @@ class Registro():
                 if emp == i.id_emp:
                     new_taxa = Taxas()
                     new_taxa.cadastrar(emp)
-                    Registro.taxas.append(new_taxa)
+                    i.taxas.append(new_taxa)
                     return
             print("Empregado Não Cadrastado")
             h = input("ENTER")

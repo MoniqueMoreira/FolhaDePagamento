@@ -9,7 +9,7 @@ def menu():
         clear()
         print("Bem-Vindo ao menu Principal")
 
-        z= int(input("1-Adicionar Novo Empregado\n2-Remover Empregado\n3-Mostra Empregados\n4-Cartão de Ponto\n5-Lança Vendas\n6-Lança Taxas\n7-Altera Dados\n8-Sair\n"))
+        z= int(input("1-Adicionar Novo Empregado\n2-Remover Empregado\n3-Mostra Empregados\n4-Cartão de Ponto\n5-Vendas\n6-Taxas\n7-Altera Dados\n8-Sair\n"))
         if z==1:
             Registro.add_empregado()
         elif z==2:

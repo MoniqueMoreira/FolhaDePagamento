@@ -10,6 +10,9 @@ class Empregados(Sindicato,Banco):
         self.tipo = tipo
         self.sindicato = sindicato
         self.pagamento = pagamento
+        self.pontos= []
+        self.vendas = []
+        self.taxas = []
 
     def cadrastra(self, id_emp):
         print("Cadrastra NOVO funcinario")
