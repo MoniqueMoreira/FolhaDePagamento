@@ -1,16 +1,23 @@
 from Empregados import Empregados
+from datetime import datetime
 
 class Assalariado(Empregados):
 
-    def __init__(self,nome ="--------",endereco="--------",id_emp = "--------",tipo = "--------",sindicato = "--------", pagamento = "--------", salario = "--------"):
-        super().__init__(nome=nome, endereco=endereco, id_emp=id_emp, tipo=tipo, sindicato=sindicato, pagamento=pagamento)
+    def __init__(self,id_emp = "--------",data_cad = "---------",nome ="--------",endereco="--------",tipo = "--------",pagamento = "--------",agenda_emp = "-----------",dia = "------------",mes= "-------------",sindicato = "------------",salario ="------------" ):
+        super().__init__(nome=nome, dia=dia, agenda_emp=agenda_emp, data_cad=data_cad, endereco=endereco, id_emp=id_emp, tipo=tipo, sindicato=sindicato, pagamento=pagamento)
         self.salario = salario
 
     def setcadrasta (self,id_emp):
         self.tipo = "Assalariado"
-        super().agenda = "Mensalmente"
+        self.agenda_emp = "Mensalmente"
         super().cadrastra(id_emp)
         Assalariado.setSalario(self)
+        Assalariado.setData(self)
+
+    def setData(self):
+        self.data_cad = datetime.now()
+        self.mes = self.data_cad.month
+        self.dia = "$"
 
     def modificar_cadrastro(self):
         i=0

@@ -8,8 +8,7 @@ def menu():
     while(i!=1):
         clear()
         print("Bem-Vindo ao menu Principal")
-
-        z= int(input("1-Adicionar Novo Empregado\n2-Remover Empregado\n3-Mostra Empregados\n4-Cartão de Ponto\n5-Vendas\n6-Taxas\n7-Altera Dados\n8-Sair\n"))
+        z= int(input("1-Adicionar Novo Empregado\n2-Remover Empregado\n3-Mostra Empregados\n4-Cartão de Ponto\n5-Vendas\n6-Taxas\n7-Altera Dados\n8-Agenda\n9-Folha\n10-Sair\n"))
         if z==1:
             Registro.add_empregado()
         elif z==2:
@@ -46,7 +45,20 @@ def menu():
         elif z==7:
             Registro.altera_dados()
         elif z==8:
-            break
+            k= int(input("Deseja:\n1-Ver Agendas Disponiveis\n2-Cria Nova Agenda\n3-Mudar Agenda de pagamento de um empregado\n>>>"))
+            if k==1:
+                Registro.mostra_agendas()
+            elif k==2:
+                Registro.criar_agenda()
+            elif k==3:
+                Registro.muda_agenda_emp()
+            else:
+                print("OPÇÃO INVÁLIDA")
+                h = input("ENTER")
+        elif z==9:
+            Registro.folha()
+        elif z==10:
+            break 
         else:
             print("Opção Inválida")
         

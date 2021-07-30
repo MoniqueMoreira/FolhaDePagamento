@@ -1,16 +1,22 @@
 from Empregados import Empregados
+from datetime import datetime
 
 class Horista(Empregados):
 
-    def __init__(self,nome ="--------",endereco="--------",id_emp = "--------",tipo = "--------",sindicato = "--------", pagamento = "--------", hora = "--------"):
-        super().__init__(nome=nome, endereco=endereco, id_emp=id_emp, tipo=tipo, sindicato=sindicato, pagamento=pagamento)
-        self.hora = hora
+    def __init__(self,id_emp = "--------",data_cad = "---------",nome ="--------",endereco="--------",tipo = "--------",pagamento = "--------",agenda_emp = "-----------",dia = "------------",mes= "-------------",sindicato = "------------",hora ="------------" ):
+        super().__init__(id_emp=id_emp, data_cad=data_cad, nome=nome, endereco=endereco, tipo=tipo, pagamento=pagamento, agenda_emp=agenda_emp, dia=dia, mes=mes, sindicato=sindicato)
+        self.hora = hora 
 
     def setcadrasta (self,id_emp):
         self.tipo = "Horista"
-        super().agenda = "Semanalmente"
+        self.agenda_emp = "Semanalmente"
         super().cadrastra(id_emp)
         Horista.setHora(self)
+        Horista.setData(self)
+
+    def setData(self):
+        self.data_cad = datetime.now()
+        self.dia = "Sexta-feira"
 
     def modificar_cadrastro(self):
         i=0

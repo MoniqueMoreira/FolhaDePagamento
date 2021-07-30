@@ -1,18 +1,26 @@
 from Empregados import Empregados
+from datetime import datetime
+
 
 class Comissionado(Empregados):
 
-    def __init__(self,nome ="--------",endereco="--------",id_emp = "--------",tipo = "--------",sindicato = "--------", pagamento = "--------", salario = "--------",percentual = "--------"):
-        super().__init__(nome=nome, endereco=endereco, id_emp=id_emp, tipo=tipo, sindicato=sindicato, pagamento=pagamento)
+    def __init__(self,id_emp = "--------",data_cad = "---------",nome ="--------",endereco="--------",tipo = "--------",pagamento = "--------",agenda_emp = "-----------",dia = "------------",mes= "-------------",sindicato = "------------",salario ="------------", percentual = "---------------"):
+        super().__init__(id_emp=id_emp, data_cad=data_cad, nome=nome, endereco=endereco, tipo=tipo, pagamento=pagamento, agenda_emp=agenda_emp, dia=dia, mes=mes, sindicato=sindicato)
         self.salario = salario
         self.percentual = percentual
 
+
     def setcadrasta (self,id_emp):
         self.tipo = "Comissionado"
-        super().agenda = "Bi - Semanalmente"
+        self.agenda_emp = "Bi-Semanalmente"
         super().cadrastra(id_emp)
         Comissionado.setSalario(self)
         Comissionado.setPercentual(self)
+        Comissionado.setData(self)
+    
+    def setData(self):
+        self.data_cad = datetime.now()
+        self.dia = "Sexta-feira"
 
     def modificar_cadrastro(self):
         i=0
