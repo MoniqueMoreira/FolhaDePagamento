@@ -47,18 +47,18 @@ class Agenda():
                     f=1
             elif tipo == 3:
                 self.tipo = "Mensalmente"
-                self.dia = int(input("Digite o Dia do mês(Ex. 18)"))
+                self.dia = int(input("Digite o Dia do mês(Ex. 18)\n>>>"))
                 f=1
             elif tipo == 4:
                 self.tipo = "Anualmente"
-                self.dia = int(input("Digite o Dia do mês(Ex. 18)"))
-                self.mes = int(input("Digite o Mês do ano(Ex. 7)"))
+                self.dia = int(input("Digite o Dia do mês(Ex. 18)\n>>>"))
+                self.mes = int(input("Digite o Mês do ano(Ex. 7)\n>>>"))
                 f=1
             else:
                 print("OPÇÃO INVÁLIDA")
 
     def toAgenda(self):
-        print("Tipo: {}, Dia/Dia da Semana: {}, Mês: {}".format(self.tipo,self.dia,self.mes))
+        print("Tipo da Agenda: {}, Dia/Dia da Semana: {}, Mês: {}".format(self.tipo,self.dia,self.mes))
 
     def setSemanalmente(self):
         self.tipo = "Semanalmente"

@@ -7,13 +7,15 @@ class Vendas():
         self.data = data
 
     def cadrastra(self, id_emp):
-
+        self.id_emp = id_emp
         venda = float(input("Digite o VAlOR da venda:\n>>>"))
         self.venda = venda
-        self.data = input("Digite o Dia:\n>>>")
-        print("Venda cadrastada com sucesso!!")
+        self.data = datetime.now()
+        print("Venda Cadastrada com Sucesso!!\n")
         Vendas.toVenda(self)
+    
+    def getVendas(self):
+        return self.venda
         
     def toVenda(self):
-        print("ID do empregado: {}\nValor da venda: {}\nData: {}".format(self.id_emp,self.venda,self.data))
-        h = input("ENTER")
+        print("   ID do empregado: {}\n   Valor da Venda: {}\n   Data: {}".format(self.id_emp,self.venda,self.data))

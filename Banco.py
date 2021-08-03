@@ -25,5 +25,11 @@ class Banco():
         conta = input("Digite a CONTA\n>>>")
         self.conta =conta
 
+    def getConta(self):
+        return self.conta
+        
+    def getAgencia(self):
+        return self.ag
+
     def toBanco(self):
-        print("Agencia: {}\nConta: {}".format(self.ag,self.conta))
+        print("   Agencia: {}\n   Conta: {}".format(self.ag,self.conta))

@@ -4,8 +4,8 @@
 
 from Agenda import Agenda
 import pickle
-emp_cadrastados=[]
-pickle.dump( emp_cadrastados, open( "emp_cadrastados.pickls", "wb" ) )
+emp_cadastrados=[]
+pickle.dump( emp_cadastrados, open( "emp_cadastrados.pickls", "wb" ) )
 
 agenda_disp = []
 sem_pad = Agenda()
@@ -18,3 +18,14 @@ bi_pad = Agenda()
 bi_pad.setBiSemanalmente()
 agenda_disp.append(bi_pad)
 pickle.dump( agenda_disp, open( "agendas_disp.pickls", "wb" ) )
+
+DIAS = [
+    'Segunda-feira',
+    'Terça-feira',
+    'Quarta-feira',
+    'Quinta-feira',
+    'Sexta-feira',
+    'Sábado',
+    'Domingo'
+]
+pickle.dump( DIAS, open( "dias.pickls", "wb" ) )

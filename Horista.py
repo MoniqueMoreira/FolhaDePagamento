@@ -1,3 +1,4 @@
+from Banco import Banco
 from Empregados import Empregados
 from datetime import datetime
 
@@ -21,7 +22,7 @@ class Horista(Empregados):
     def modificar_cadrastro(self):
         i=0
         while(i!=1):
-            k=int(input("Deseja ALTERA qual dados do empregado:\n1-Nome\n2-Endereço\n3-Forma de Pagamento\n4-Sindicato\n5-Valor Salário\n>>>"))
+            k=int(input("Deseja ALTERA qual dados do empregado:\n1-Nome\n2-Endereço\n3-Forma de Pagamento\n4-Sindicato\n5-Valor hora\n>>>"))
             if k == 1:
                 super().setNome()
                 i=1
@@ -35,7 +36,7 @@ class Horista(Empregados):
                 super().setSindicato()
                 i=1
             elif k==5:
-                Horista.setHora()
+                Horista.setHora(self)
                 i=1
             else:
                 print("Opção Inválida")
@@ -46,6 +47,39 @@ class Horista(Empregados):
     
     def toEmpregado(self):
         super().toEmpregados()
-        print("Valor/Hora: {}".format(self.hora))
+        print("   Valor/Hora: {}".format(self.hora))
+
+    def receber(self):
+        total_geral =0
+        print("Nome: {}\nID: {}\nForma de Pagamanto: {}".format(self.nome,self.id_emp,self.pagamento))
+        if self.pagamento == "Correios":
+            print("Endereço: {}".format(self.endereco))
+        elif self.pagamento == "Conta bancária":
+            print("Conta: ",self.getConta())
+            print("Agencia: ",self.getAgencia())
+        valor = 0
+        total = 0
+        for i in self.pontos:
+            hora = i.getPonto()
+            if hora > 8 :
+                extra = (hora - 8)*self.hora*1.5
+                valor = 8*self.hora
+            else:
+                valor = hora*self.hora
+                extra = 0
+            total = total + valor + extra
+        print("Total por Horas trabalhadas: {}".format(total))
+        totalT = 0
+        tx_sind = 0 
+        if self.sindicato == "Sim":
+            tx_sind = self.getTaxa()
+            print("Taxa Do Sindicato: {}".format(tx_sind))   
+            for i in self.taxas:
+                adicionais = i.getTaxas()
+                totalT = totalT + adicionais
+            print("Taxas de Serviço: {}".format(totalT))
+
+        total_geral = total_geral + total - totalT -tx_sind
+        print("Total a receber: {}".format(total_geral))
 
     

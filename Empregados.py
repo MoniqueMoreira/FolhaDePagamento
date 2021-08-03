@@ -3,7 +3,8 @@ from Sindicato import Sindicato
 from Banco import Banco
 
 class Empregados(Sindicato,Banco):
-    def __init__(self,id_emp = "--------",data_cad = "---------",nome ="--------",endereco="--------",tipo = "--------",pagamento = "--------",agenda_emp = "-----------",dia = "------------",mes= "-------------",ult_salario= "-------------",sindicato = "--------"):
+
+    def __init__(self,id_emp = "-------------",data_cad = "-------------",nome ="-------------",endereco="-------------",tipo = "-------------",pagamento = "-------------",agenda_emp = "-------------",dia = "-------------",mes= "-------------",ult_salario= "-------------",sindicato = "-------------"):
         self.id_emp = id_emp
         self.data_cad= data_cad
         self.nome = nome
@@ -20,7 +21,7 @@ class Empregados(Sindicato,Banco):
         self.taxas = []
         
     def cadrastra(self, id_emp):
-        print("Cadrastra NOVO funcinario")
+        print("Cadrastra NOVO Empregado:\n")
         self.id_emp = id_emp
         Empregados.setNome(self)
         Empregados.setEndereco(self)
@@ -29,11 +30,11 @@ class Empregados(Sindicato,Banco):
        
     def setNome(self):
         nome = str(input("Digite o NOME do empregado\n>>>"))
-        self.nome = nome.capitalize()
+        self.nome = nome.title()
 
     def setEndereco(self):
         endereco = str(input("Digite o ENDEREÇO do empregado\n>>>"))
-        self.endereco = endereco.capitalize()
+        self.endereco = endereco.title()
     
     def setSindicato(self):
         i=0
@@ -73,8 +74,17 @@ class Empregados(Sindicato,Banco):
                     print("FORMA DE PAGAMNTO INVÁLIDA")
 
     def toEmpregados(self):
-        print("ID: {}\nNome: {}\nEndereço: {}\nTipo: {}\nData de Cadrstro: {}\nDia: {}\nTipo de Pagamento: {}\nSindicato: {}\nTipo de Agenda: {}".format(self.id_emp,self.nome,self.endereco,self.tipo,self.data_cad,self.dia,self.pagamento,self.sindicato, self.agenda_emp))
-        if self.sindicato == "Sim":
-            Sindicato.toEmp_sind(self)
+        print("Data de Cadastro: {}".format(self.data_cad))
+        print("ID: {}".format(self.id_emp))
+        print("Nome: {}".format(self.nome))
+        print("Endereço: {}".format(self.endereco))
+        print("Tipo de Agenda: {}".format(self.agenda_emp))
+        print("Dia/Dia da Semana: {}".format(self.dia))
+        print("Forma de Pagamento: {}".format(self.pagamento))
         if self.pagamento == "Conta bancária":
             Banco.toBanco(self)
+        print("Ultimo pagamento: {}".format(self.ult_salario))
+        print("Pertence ao Sindicato: {}".format(self.sindicato))
+        if self.sindicato == "Sim":
+            Sindicato.toEmp_sind(self)
+        print("Tipo de Empregado: {}".format(self.tipo))        

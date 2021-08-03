@@ -47,6 +47,27 @@ class Assalariado(Empregados):
     
     def toEmpregado(self):
         super().toEmpregados()
-        print("Salario: {}".format(self.salario))
+        print("   Salario: {}".format(self.salario))
 
-    
+    def receber(self):
+        total_geral = 0
+        print("Nome: {}\nID: {}\nForma de Pagamanto: {}".format(self.nome,self.id_emp,self.pagamento))
+        if self.pagamento == "Correios":
+            print("Endereço: {}".format(self.endereco))
+        elif self.pagamento == "Conta bancária":
+            print("Conta: ",self.getConta())
+            print("Agencia: ",self.getAgencia())
+        total = float(self.salario)
+        print("Salario: {}".format(total))
+        totalT = 0
+        tx_sind = 0 
+        if self.sindicato == "Sim":
+            tx_sind = self.getTaxa()
+            print("Taxa Do Sindicato: {}".format(tx_sind))
+            for i in self.taxas:
+                adicionais = i.getTaxas()
+                totalT = totalT + adicionais
+            print("Taxas de Serviço: {}".format(totalT))
+
+        total_geral = total_geral + total - totalT -tx_sind
+        print("Total a receber: {}".format(total_geral))
