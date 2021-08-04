@@ -86,18 +86,22 @@ class Registro():
             print("OPÇÃO INVÁLIDA")
         
     def altera_dados():
-        k=int(input("Sabe o ID do Empregado:\n1-Sim\n2-Não\n>>>"))
+        k=int(input("Sabe o ID do Empregado:\n1-Sim\n2-Não\n3-Volta\n>>>"))
         if k==1 or k==2:
             if k==2:
                 Registro.mostra_emp()
             emp = int(input("Digite o ID do empregado:\n>>>"))
             for i in Registro.emp_cadastrados:
                 if emp == i.id_emp:
-                   i.modificar_cadrastro()
-                   pickle.dump( Registro.emp_cadastrados, open( "emp_cadastrados.pickls", "wb" ) )
-                   return
+                    i.modificar_cadrastro()
+                    pickle.dump( Registro.emp_cadastrados, open( "emp_cadastrados.pickls", "wb" ) )
+                    i.toEmpregado()
+                    h=input("ENTER")
+                    return
             print("Empregado Não cadastrado")
             k = input("ENTER")
+        elif k == 3:
+            return
         else:
             print("OPÇÃO INVÁLIDA")
     
@@ -132,7 +136,7 @@ class Registro():
                 if emp == i.id_emp:
                     for d in i.pontos:
                         d.toPonto()
-                    h = input("ENTER")
+                    k = input("ENTER")
                     return
             print("Empregado Não Cadastrado")
             k = input("ENTER")

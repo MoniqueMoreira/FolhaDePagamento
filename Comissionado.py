@@ -24,7 +24,7 @@ class Comissionado(Empregados):
     def modificar_cadrastro(self):
         i=0
         while(i!=1):
-            k=int(input("Deseja ALTERA qual dados do empregado:\n1-Nome\n2-Endereço\n3-Forma de Pagamento\n4-Sindicato\n5-Valor Salário\n>>>"))
+            k=int(input("Deseja ALTERA qual dados do empregado:\n1-Nome\n2-Endereço\n3-Forma de Pagamento\n4-Sindicato\n5-Valor Salário/Percentual\n>>>"))
             if k == 1:
                 super().setNome()
                 i=1
@@ -38,8 +38,8 @@ class Comissionado(Empregados):
                 super().setSindicato()
                 i=1
             elif k==5:
-                Comissionado.setSalario()
-                Comissionado.setPercentual()
+                Comissionado.setSalario(self)
+                Comissionado.setPercentual(self)
                 i=1
             else:
                 print("Opção Inválida")
@@ -49,8 +49,8 @@ class Comissionado(Empregados):
         self.salario = salario
 
     def setPercentual(self):
-        percentual =float(input("Digite PERCENTUAL DA COMISSÃO do empregado\n>>>"))
-        self.percentual =percentual
+        percentual =float(input("Digite PERCENTUAL DA COMISSÃO do empregado em %\n>>>"))
+        self.percentual =percentual/100
     
     def toEmpregado(self):
         super().toEmpregados()

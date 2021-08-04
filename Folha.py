@@ -79,7 +79,7 @@ class Folha():
                             x.ult_salario = data
                             Folha.emp_recebeu.append(x)
             else: #Anualmente
-                if x.dia == dia and x.mes == mes:
+                if (x.dia == dia or (x.dia == "$" and dia == ult_dia))  and x.mes == mes:
                     if x.ult_salario == "-------------":
                         x.receber()
                         x.ult_salario = data

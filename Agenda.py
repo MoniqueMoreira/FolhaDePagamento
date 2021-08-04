@@ -47,11 +47,11 @@ class Agenda():
                     f=1
             elif tipo == 3:
                 self.tipo = "Mensalmente"
-                self.dia = int(input("Digite o Dia do mês(Ex. 18)\n>>>"))
+                self.dia = int(input("Digite o Dia do mês(Ex. 18,Se for ultimo dia do Mês coloque ""$"")\n>>>"))
                 f=1
             elif tipo == 4:
                 self.tipo = "Anualmente"
-                self.dia = int(input("Digite o Dia do mês(Ex. 18)\n>>>"))
+                self.dia = int(input("Digite o Dia do mês(Ex. 18,Se for ultimo dia do Mês coloque ""$"")\n>>>"))
                 self.mes = int(input("Digite o Mês do ano(Ex. 7)\n>>>"))
                 f=1
             else:

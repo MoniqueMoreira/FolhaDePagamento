@@ -8,8 +8,8 @@ def menu():
     while(i!=1):
         clear()
         Registro.atul_lista()
-        print("Bem-Vindo ao menu Principal")
-        z= int(input("1-Adicionar Novo Empregado\n2-Remover Empregado\n3-Mostra Empregados\n4-Altera Dados Empregado\n5-Vendas\n6-Taxas\n7-Cartão de Ponto\n8-Agenda\n9-Folha\n10-Sair\n"))
+        print("----Bem-Vindo ao menu Principal----\nEscolha uma das opções abaixo:\n")
+        z= int(input("1-Adicionar Novo Empregado\n2-Remover Empregado\n3-Mostra Empregados\n4-Altera Dados Empregado\n5-Vendas\n6-Taxas\n7-Cartão de Ponto\n8-Agenda\n9-Folha\n10-Sair\n>>>"))
         clear()
         if z==1:
             Registro.add_empregado()

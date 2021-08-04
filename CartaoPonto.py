@@ -11,10 +11,11 @@ class CartaoPonto():
         self.hora = float(input("Digite a quantidade de Horas.minutos trabalhados:\n>>>"))
         print("Ponto Batido com sucesso:")
         CartaoPonto.toPonto(self)
+        h = input("ENTER")
         
     def toPonto(self):
         print("   Data: {}\n   Horas Trabalhadas: {}".format(self.data,self.hora))
-        h = input("ENTER")
+       
    
     def getPonto(self):
         return self.hora

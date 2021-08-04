@@ -51,7 +51,7 @@ class Horista(Empregados):
 
     def receber(self):
         total_geral =0
-        print("Nome: {}\nID: {}\nForma de Pagamanto: {}".format(self.nome,self.id_emp,self.pagamento))
+        print("Nome: {}, ID: {}, Forma de Pagamanto: {}".format(self.nome,self.id_emp,self.pagamento))
         if self.pagamento == "Correios":
             print("Endereço: {}".format(self.endereco))
         elif self.pagamento == "Conta bancária":
@@ -68,18 +68,18 @@ class Horista(Empregados):
                 valor = hora*self.hora
                 extra = 0
             total = total + valor + extra
-        print("Total por Horas trabalhadas: {}".format(total))
+        print("Total por Horas trabalhadas: {:.2f}".format(total))
         totalT = 0
         tx_sind = 0 
         if self.sindicato == "Sim":
             tx_sind = self.getTaxa()
-            print("Taxa Do Sindicato: {}".format(tx_sind))   
+            print("Taxa Do Sindicato: {:.2f}".format(tx_sind))   
             for i in self.taxas:
                 adicionais = i.getTaxas()
                 totalT = totalT + adicionais
-            print("Taxas de Serviço: {}".format(totalT))
+            print("Taxas de Serviço: {:.2f}".format(totalT))
 
         total_geral = total_geral + total - totalT -tx_sind
-        print("Total a receber: {}".format(total_geral))
+        print("Total a receber: {:.2f}".format(total_geral))
 
     
