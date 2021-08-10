@@ -70,7 +70,7 @@ class Registro():
         h=input("ENTER")
 
     def remover_empregado():
-        k=int(input("Sabe o ID do funcionario?\n1-Sim\n2-Não\n>>>"))
+        k=int(input("Sabe o ID do funcionario?\n1-Sim\n2-Não\n3-Volta\n>>>"))
         if k==1 or k==2:
             if k==2:
                 Registro.mostra_emp()
@@ -78,10 +78,14 @@ class Registro():
             for i in Registro.emp_cadastrados:
                 if emp == i.id_emp:
                     Registro.emp_cadastrados.remove(i)
+                    print("Empregado Removido com Sucesso!!")
                     pickle.dump( Registro.emp_cadastrados, open( "emp_cadastrados.pickls", "wb" ) )
+                    k=input("ENTER")
                     return
             print("Empregado Não cadastrado")
             k = input("ENTER")
+        elif k==3:
+                return
         else:
             print("OPÇÃO INVÁLIDA")
         
@@ -289,3 +293,9 @@ class Registro():
         else:
             print("OPÇÃO INVÁLIDA")
             k = input("ENTER")
+
+    def undo():
+        print("Opção indisponivel no momento")
+
+    def remo():
+        print("Opção indisponivel no momento")

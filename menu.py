@@ -9,7 +9,7 @@ def menu():
         clear()
         Registro.atul_lista()
         print("----Bem-Vindo ao menu Principal----\nEscolha uma das opções abaixo:\n")
-        z= int(input("1-Adicionar Novo Empregado\n2-Remover Empregado\n3-Mostra Empregados\n4-Altera Dados Empregado\n5-Vendas\n6-Taxas\n7-Cartão de Ponto\n8-Agenda\n9-Folha\n10-Sair\n>>>"))
+        z= int(input("1-Adicionar Novo Empregado\n2-Remover Empregado\n3-Mostra Empregados\n4-Altera Dados Empregado\n5-Vendas\n6-Taxas\n7-Cartão de Ponto\n8-Agenda\n9-Folha\n10-Undo\n11-Remo\n12-Sair\n>>>"))
         clear()
         if z==1:
             Registro.add_empregado()
@@ -69,6 +69,10 @@ def menu():
             Folha.atualizar_lista()
             Folha.folha()
         elif z==10:
+            Registro.undo()
+        elif z==11:
+            Registro.remo()
+        elif z==12:
             break 
         else:
             print("Opção Inválida")
